@@ -1,36 +1,33 @@
-import React, { Component } from "react";
+import React from "react";
 import { Portal } from "react-portal";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 import s from "./Modal.module.css";
 
 // const modalRoot = document.getElementById("modal-root");
 
-class Modal extends Component {
-  static propTypes = {
-    onBackdrop: PropTypes.func.isRequired,
-    content: PropTypes.string.isRequired,
-  };
+function Modal({ content, onBackdrop }) {
+  // static propTypes = {
+  //   onBackdrop: PropTypes.func.isRequired,
+  //   content: PropTypes.string.isRequired,
+  // };
 
-  handleBackdropClick = (e) => {
+  const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
-      this.props.onBackdrop();
+      onBackdrop();
     }
   };
 
-  render() {
-    const { content } = this.props;
-    return (
-      <Portal>
-        <div className={s.Overlay} onClick={this.handleBackdropClick}>
-          <div className={s.Modal}>
-            <img src={content} alt="" />
-          </div>
+  return (
+    <Portal>
+      <div className={s.Overlay} onClick={handleBackdropClick}>
+        <div className={s.Modal}>
+          <img src={content} alt="" />
         </div>
-        , modalRoot
-      </Portal>
-    );
-  }
+      </div>
+      , modalRoot
+    </Portal>
+  );
 }
 
 export default Modal;
