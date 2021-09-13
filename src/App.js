@@ -47,9 +47,9 @@ function App() {
   // };
 
   const hadleChangeQuery = (query) => {
-    if (query === searchQuery) {
-      return;
-    }
+    // if (query === searchQuery) {
+    //   return;
+    // }
     setSearchQuery(query);
     setVisibleImages([]);
     setPage(1);
@@ -67,8 +67,8 @@ function App() {
   };
 
   const modalContentSet = (itemId) => {
-    // const el = visibleImages.find(({ id }) => id === itemId);
-    setModalContent(visibleImages.largeImageURL);
+    const el = visibleImages.find((id) => id === itemId);
+    setModalContent(el.largeImageURL);
   };
 
   return (

@@ -15,8 +15,9 @@ function SearchBar({ onSubmit }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleChange = (event) => {
-    const { name, value } = event.currentTarget;
-    setSearchQuery({ [name]: value });
+    // const { name, value } = event.currentTarget;
+    // setSearchQuery({ [name]: value });
+    setSearchQuery(event.currentTarget.value);
   };
 
   const handleSubmit = (event) => {
