@@ -73,7 +73,7 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar onSubmit={() => hadleChangeQuery()} />
+      <SearchBar onSubmit={hadleChangeQuery} />
 
       <ImageGallery
         images={visibleImages}
