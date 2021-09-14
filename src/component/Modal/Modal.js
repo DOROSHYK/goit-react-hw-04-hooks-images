@@ -11,12 +11,24 @@ function Modal({ content, onBackdrop }) {
   //   onBackdrop: PropTypes.func.isRequired,
   //   content: PropTypes.string.isRequired,
   // };
+  // useEffect(() => {
+  //   window.addEventListener('keydown', handleKeyDown);
+  //   return () => {
+  //     window.removeEventListener('keydown', handleKeyDown);
+  //   };
+  // });
 
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onBackdrop();
     }
   };
+
+  // const handleKeyDown = e => {
+  //   if (e.code === 'Escape') {
+  //     onBackdrop();
+  //   }
+  // };
 
   return (
     <Portal>

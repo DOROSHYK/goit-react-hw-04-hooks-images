@@ -39,7 +39,7 @@ function App() {
   }, [searchQuery, page]);
 
   const toggleModal = () => {
-    setOpenModal(({ openModal }) => ({ openModal: !openModal }));
+    setOpenModal(!openModal);
   };
 
   // const toggleLoading = () => {
@@ -67,7 +67,8 @@ function App() {
   };
 
   const modalContentSet = (itemId) => {
-    const el = visibleImages.find((id) => id === itemId);
+    const el = visibleImages.find((el) => el.id === itemId);
+
     setModalContent(el.largeImageURL);
   };
 
@@ -78,12 +79,10 @@ function App() {
       <ImageGallery
         images={visibleImages}
         onClick={toggleModal}
-        onItemClick={() => modalContentSet()}
+        onItemClick={modalContentSet}
       />
 
-      {openModal && (
-        <Modal content={modalContent} onBackdrop={() => toggleModal()} />
-      )}
+      {openModal && <Modal content={modalContent} onBackdrop={toggleModal} />}
       {isLoading && <Spinner />}
 
       {<Button onPress={handleNextPage} />}
